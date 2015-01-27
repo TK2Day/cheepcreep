@@ -48,7 +48,7 @@ end
       #How to stack everything together?
     end
     puts "Database updated successfully."
-    gets
+    gets.chomp
   end
 
   def show_users
