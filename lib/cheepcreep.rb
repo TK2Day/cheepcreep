@@ -17,9 +17,9 @@ end
     @auth = {:username => ENV['GITHUB_USER'], :password => ENV['GITHUB_PASS']}
   end
 
-  def get_followers(input = [], options = [])
-    options.merge!({:basic_auth => @auth})
-    resp = self.class.get("/users/#{input}/followers", options)
+  def get_followers(input = [], opts = [])
+    opts.merge!({:basic_auth => @auth})
+    resp = self.class.get("/users/#{input}/followers", opts)
     data = JSON.parse(resp.body)
     user_info = []
     data.sample(20).each do |x|
