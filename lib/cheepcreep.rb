@@ -42,7 +42,15 @@ end
 
   def insert_database(users = [])
     users.each do |x|
-      Cheepcreep::GithubUser.create
+      Cheepcreep::GithubUser.create(login: user[:login],
+                                    name: user[:name],
+                                    blog: user[:blog]
+                                    public_repos: user[:public_repos].to_i,
+                                    followers: user[:followers]to_i,
+                                    following: user[:following]to_i)
+
+
+
       #TODO all of the integers should come after that^
       #.to_i Should change the info into Intergers
       #How to stack everything together?
