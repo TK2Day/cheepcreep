@@ -18,6 +18,7 @@ end
   end
 #dylans code had opts = {:query => {:per_page => 100, :page => 2}}
   def get_followers(input = [], opts = [])
+    #I found this on stack overflow, though im not sure if it is what I would use agian.
     opts.merge!({:basic_auth => @auth})
     resp = self.class.get("/users/#{input}/followers", opts)
     data = JSON.parse(resp.body)
