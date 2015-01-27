@@ -16,16 +16,16 @@ end
     #ENV["FOO"] is like echo $FOO
     @auth = {:username => ENV['GITHUB_USER'], :password => ENV['GITHUB_PASS']}
   end
-
+#dylans code had opts = {:query => {:per_page => 100, :page => 2}}
   def get_followers(input = [], opts = [])
     opts.merge!({:basic_auth => @auth})
     resp = self.class.get("/users/#{input}/followers", opts)
     data = JSON.parse(resp.body)
-    user_info = []
+    GHuser_info = []
     data.sample(20).each do |x|
-      users_info << get_user_info(x['login'])
+      GHuser_info << get_user_info(x['login'])
     end
-    return users_info
+    return GHuser_info
 
   end
 
@@ -44,19 +44,15 @@ end
     users.each do |x|
       Cheepcreep::GithubUser.create(login: user[:login],
                                     name: user[:name],
-                                    blog: user[:blog]
-                                    public_repos: user[:public_repos].to_i,
-                                    followers: user[:followers]to_i,
+                                    blog: user[:blog],
+                                    public_repos: user[:public_repos].to_i ,
+                                    followers: user[:followers]to_i ,
                                     following: user[:following]to_i)
-
-
 
       #TODO all of the integers should come after that^
       #.to_i Should change the info into Intergers
       #How to stack everything together?
     end
-    puts "Database updated successfully."
-    gets.chomp
   end
 
   def show_users
