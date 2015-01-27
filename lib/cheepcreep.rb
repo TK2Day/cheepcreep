@@ -44,6 +44,8 @@ end
     users.each do |x|
       Cheepcreep::GithubUser.create
       #TODO all of the integers should come after that^
+      #.to_i Should change the info into Intergers
+      #How to stack everything together?
     end
     puts "Database updated successfully."
     gets
@@ -51,7 +53,7 @@ end
 
   def show_users
     system 'clear'
-    puts "All the useser are these :D : "
+    puts "All the users are these :D : "
     Cheepcreep::GithubUser.order(followers: :desc).each do |x|
       puts "Followers: #{x.followers} \t\t User: #{x.login}"
     end
@@ -65,8 +67,10 @@ def get_gists(screen_name)
 end
 
 
+# github = Github.new
+# resp = github.get_followers(username<)
+# followers = JSON.pare(resp.body)
+# Cheepcrep::GitUser.create
 
-github = Github.new
-resp = github.get_followers(username<)
-followers = JSON.pare(resp.body)
-Cheepcrep::GitUser.create
+creeper = Cheepcreep.new
+creeper.creep
