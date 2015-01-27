@@ -51,7 +51,7 @@ end
 
   def show_users
     system 'clear'
-    puts "All users in database: "
+    puts "All the useser are these :D : "
     Cheepcreep::GithubUser.order(followers: :desc).each do |x|
       puts "Followers: #{x.followers} \t\t User: #{x.login}"
     end
